@@ -34,7 +34,9 @@ class Dashboard extends CI_Controller
         $querytransaction = "SELECT CreatedDateTime FROM mewnetmysql.tbltransactions ORDER BY ID DESC LIMIT 1;";
         $data['last_transaction'] = $this->db->query($querytransaction)->row_array();
 
-        // var_dump($data['last_transaction']);
+        // echo '<pre>';
+        // var_dump($data);
+        // echo '</pre>';
         $this->template->load('template', 'dashboard/v_Dashboard', $data);
     }
 
