@@ -31,11 +31,10 @@ class Dashboard extends CI_Controller
         $data['last_document'] = $this->db->query($querydokumen)->row_array();
 
         //DATABASE MEWNET TABEL TRANSACTION //
-        $querydokumen = "SELECT CreatedDateTime FROM mewnetmysql.tbltransactions ORDER BY ID DESC LIMIT 1;";
-        $data['last_transaction'] = $this->db->query($querydokumen)->row_array();
+        $querytransaction = "SELECT CreatedDateTime FROM mewnetmysql.tbltransactions ORDER BY ID DESC LIMIT 1;";
+        $data['last_transaction'] = $this->db->query($querytransaction)->row_array();
 
         // var_dump($data['last_transaction']);
-
         $this->template->load('template', 'dashboard/v_Dashboard', $data);
     }
 
