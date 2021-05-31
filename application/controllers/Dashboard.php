@@ -14,7 +14,7 @@ class Dashboard extends CI_Controller
 
     public function index()
     {
-        // Database PO//
+        // DATABASE PO//
         $querymapapo = "SELECT tglisi FROM po WHERE namapt LIKE 'PT.MITRA AGRO PERSADA ABADI%' ORDER BY id DESC LIMIT 1;";
         $querymsalpo = "SELECT tglisi FROM po WHERE namapt LIKE 'PT.MULIA SAWIT AGRO LESTARI%' ORDER BY id DESC LIMIT 1;";
         $querypeakpo = "SELECT tglisi FROM po WHERE namapt LIKE 'PT.PERSADA ERA AGRO KENCANA%' ORDER BY id DESC LIMIT 1;";
@@ -25,6 +25,16 @@ class Dashboard extends CI_Controller
         $data['last_popeak'] = $this->db->query($querypeakpo)->row_array();
         $data['last_popsam'] = $this->db->query($querypsampo)->row_array();
         $data['last_pokpp'] = $this->db->query($querykpppo)->row_array();
+
+        // DATABASE ABSENSI
+        $query_abs_msal = "SELECT tgl FROM absen.absensi_msal ORDER BY id DESC LIMIT 1;";
+        $query_abs_mapa = "SELECT tgl FROM absen.absensi_mapa ORDER BY id DESC LIMIT 1;";
+        $query_abs_peak = "SELECT tgl FROM absen.absensi_peak ORDER BY id DESC LIMIT 1;";
+        $query_abs_psam = "SELECT tgl FROM absen.absensi_psam ORDER BY id DESC LIMIT 1;";
+        $data['last_abs_msal'] = $this->db->query($query_abs_msal)->row_array();
+        $data['last_abs_mapa'] = $this->db->query($query_abs_mapa)->row_array();
+        $data['last_abs_peak'] = $this->db->query($query_abs_peak)->row_array();
+        $data['last_abs_psam'] = $this->db->query($query_abs_psam)->row_array();
 
         //DATABASE REGULASI //
         $querydokumen = "SELECT tgl_upload FROM regulasi.master_dokumen ORDER BY no_urut DESC LIMIT 1;";
