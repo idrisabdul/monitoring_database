@@ -393,6 +393,28 @@
 <script src="<?= base_url() ?>/vendors/jquery/dist/jquery.min.js"></script>
 
 <script>
+    setTimeout(updatePo, 60 * 60 * 1000);
+    // just show current time stamp to see time of last refresh.
+    // document.write(new Date());
+    function updatePo() {
+        $.ajax({
+            url: '<?= base_url() ?>Dashboard/updatePo',
+            dataType: 'JSON',
+            async: false,
+            success: function(data) {
+
+                window.location.reload();
+            }
+        });
+    }
+</script>
+
+<?php
+// Your PHP code that has to be executed every 5 minutes comes here
+
+?>
+
+<script>
     $(document).ready(function() {
         setInterval(timestamp, 1000);
     });
